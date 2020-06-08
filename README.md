@@ -37,8 +37,8 @@ Constants:
 
 #### University of Washington
 
-- URL: `https://www.washington.edu/students/reg/${y1}${y2}cal.html`
-- Dates:
+1. URL: `https://www.washington.edu/students/reg/${y1}${y2}cal.html`
+2. Dates:
 
 ```
 def get_date(num):
@@ -48,3 +48,17 @@ for i in range NUM_QUARTERS:
     start = get_date(2)
     end = get_date(4) if it isn't empty, else get_date(3)
 ```
+
+#### Stanford University
+
+1. URL:
+   1. https://registrar.stanford.edu/academic-calendar
+   2. https://registrar.stanford.edu/future-academic-calendars
+   3. https://registrar.stanford.edu/academic-calendar-${Y1}-${y2}
+1. Dates:
+   1. Open links in the following order and look for an `h2` element with the content `${Y1}-${y2} First Day of Classes and End of Term`:
+      1. Link #3
+      2. Link #1
+      3. Link #2
+   2. If not found, abort.
+   3. 4 bullets, each has the quarter description, a colon, and then `MMMM D and MMMM D.*`. Parse out the dates.
